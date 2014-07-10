@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mColor.js Example</title>
+<script src="mColor.js"></script>
+<script type="text/javascript">
+
+	function redraw() {
+		var incolor = gid('base-rgb').value;
+		var base = new mColor(incolor);
+
+		// Update the base row
+		gid('base-rgb').value = gid('base-row').style.backgroundColor = base.getString();
+		gid('base-val').innerHTML = ('lightness ' + Math.round(base.getLightness()));
+
+		// Row Stuff
+		gid('L75-rgb').innerHTML = gid('L75-row').style.backgroundColor = base.lighten(0.75).getString();
+		gid('L75-val').innerHTML = ('lightness ' + Math.round(base.lighten(0.75).getLightness()));
+		gid('L50-rgb').innerHTML = gid('L50-row').style.backgroundColor = base.lighten(0.50).getString();
+		gid('L50-val').innerHTML = ('lightness ' + Math.round(base.lighten(0.50).getLightness()));
+		gid('L25-rgb').innerHTML = gid('L25-row').style.backgroundColor = base.lighten(0.25).getString();
+		gid('L25-val').innerHTML = ('lightness ' + Math.round(base.lighten(0.25).getLightness()));
+		gid('D25-rgb').innerHTML = gid('D25-row').style.backgroundColor = base.darken(0.25).getString();
+		gid('D25-val').innerHTML = ('lightness ' + Math.round(base.darken(0.25).getLightness()));
+		gid('D50-rgb').innerHTML = gid('D50-row').style.backgroundColor = base.darken(0.50).getString();
+		gid('D50-val').innerHTML = ('lightness ' + Math.round(base.darken(0.50).getLightness()));
+		gid('D75-rgb').innerHTML = gid('D75-row').style.backgroundColor = base.darken(0.75).getString();
+		gid('D75-val').innerHTML = ('lightness ' + Math.round(base.darken(0.75).getLightness()));
+
+	}
+
+	function gid(id) { return document.getElementById(id); }
+</script>
+<style type="text/css">
+	html, body {
+		height:100%;
+		padding:0px;
+		margin:0px;
+		font-family: sans-serif;
+	}
+
+	table {
+		margin:0px;
+		border-collapse: collapse;
+		width:100%;
+		height:100%;
+	}
+
+	td {
+		text-align: center;
+	}
+
+	span, input {
+		font-size:14px;
+		width:15%;
+		display: inline-block;
+		text-align: center;
+		color: slategray;
+		background-color: rgb(240,240,240);
+		border: 1px solid rgb(240,240,240);
+		padding: 8px 0px;
+	}
+
+	input {
+		background-color: white;
+		color: black;
+		border: 1px solid gray;
+	}
+</style>
+</head>
+<body onload="redraw();">
+	<table>
+		<tr id='L75-row'><td>
+			<span id='L75-rgb'></span>
+			<span id='L75-val'></span>
+			<span>lighten 75%</span>
+		</td></tr>
+		<tr id='L50-row'><td>
+			<span id='L50-rgb'></span>
+			<span id='L50-val'></span>
+			<span>lighten 50%</span>
+		</td></tr>
+		<tr id='L25-row'><td>
+			<span id='L25-rgb'></span>
+			<span id='L25-val'></span>
+			<span>lighten 25%</span>
+		</td></tr>
+		<tr id='base-row'><td>
+			<input type='text' id='base-rgb' value='rgb(0,132,150)' onchange='redraw();'>
+			<span id='base-val'></span>
+		</td></tr>
+		<tr id='D25-row'><td>
+			<span id='D25-rgb'></span>
+			<span id='D25-val'></span>
+			<span>darken 25%</span>
+		</td></tr>
+		<tr id='D50-row'><td>
+			<span id='D50-rgb'></span>
+			<span id='D50-val'></span>
+			<span>darken 50%</span>
+		</td></tr>
+		<tr id='D75-row'><td>
+			<span id='D75-rgb'></span>
+			<span id='D75-val'></span>
+			<span>darken 75%</span>
+		</td></tr>
+	</table>
+</body>
