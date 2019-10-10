@@ -42,7 +42,7 @@ function mColor(mc){
 	this.getHSL = function() {
 		if(!this.hsl) this.hsl = RGBtoHSL({r:this.rgb.r, g:this.rgb.g, b:this.rgb.b});
 		return this.hsl;
-	}
+	};
 
 	this.getLightness = function(type) {
 		// Lightness from 0.0 to 1.0
@@ -90,7 +90,7 @@ function mColor(mc){
 		var rgb = HSLtoRGB(hsl);
 
 		return new mColor(rgb);
-	}
+	};
 
 	this.lighten = function(lpercent, type){
 		// Percent as a decimal between 0.0 and 1.0
@@ -153,7 +153,7 @@ function importRGB(oa, validate) {
 	function hexToDec(hex) { return sanitizeRGB(parseInt(hex, 16), validate); }
 
 	function parseHex(hex, c) {
-		var m = hex.match(/^\W*([0-9A-F]{3}([0-9A-F]{3})?)\W*$/i)
+		var m = hex.match(/^\W*([0-9A-F]{3}([0-9A-F]{3})?)\W*$/i);
 
 		if(m){
 			if(m[1].length > 3) {
